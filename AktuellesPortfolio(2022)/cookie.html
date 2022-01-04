@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Clicker GuiAutomation</title>
+</head>
+<body>
+    <pre id="two" style="font-size: 1em; color:rgb(126, 95, 2); font-size: 1.1rem;">
+        #!python3
+        
+        import pyautogui
+        import webbrowser
+        import time
+        import gc
+        import threading
+        import math
+        
+        #cookiePos = Point(x=-1606, y=514)
+        #cursosPos = Point(x=-179, y=431)
+        #grandMaPos = Point(x=-166, y=510)
+        #farmPos =  Point(x=-166, y=562)
+        #housePos = Point(x=-187, y=634)
+        #fabricPos = Point(x=-205, y=691)
+        
+        webbrowser.open("http://orteil.dashnet.org/cookieclicker/")
+        time.sleep(15)
+        
+        costs = {"cursor": 15, "grandma": 100, "farm": 1100, "mine": 12000, "fabric": 130000}
+        itemCount = {"cursor": 0, "grandma": 0, "farm": 0, "mine": 0, "fabric": 0}
+        lastItemCount = {"cursor": 0, "grandma": 0, "farm": 0, "mine": 0, "fabric": 0}
+        
+        costTax = 1.15
+        
+        
+        def buyCursor():
+                pyautogui.click(-179, 435, duration=0.01)
+                print("Oh cursor wurde aufgerufen")
+        
+        def buyGrandma():
+            pyautogui.click(-166, 515, duration=0.01)
+            print("grandma wurde gekauft")
+        
+        def buyFarm():
+            pyautogui.click(-166, 567, duration=0.01)
+            print("farm wurde gekauft")
+        
+        def buyMine():
+            pyautogui.click(-187, 639, duration=0.01)
+            
+        def buyFabric():
+            pyautogui.click(-205, 696, duration=0.01)
+        
+        functions = {"cursor": buyCursor, "grandma": buyGrandma, "farm": buyFarm, "mine": buyMine, "fabric": buyFabric}
+        
+        def cookieRaise(cookies, rate, clicks):
+            clicks = 100
+            cookies = -15
+            rate = 2
+            for i in range(clicks):
+                time.sleep(1)
+                cookies += rate
+        
+        
+        # global clicks = 100
+        # global cookies = -15
+        # global rate = 0
+        #cookieRaiseThread = threading.Thread(target=cookieRaise, args=[cookies, rate, clicks])
+        
+        def mainGame():
+            clicks = 500
+            cookies = -15
+            rate = 1
+            for i in range(clicks):
+                bought = False
+                price = 0 
+            #print("Anfangs Cookies: {}".format(cookies))
+            #print("Anfangs clicks: {}".format(clicks))
+                for item in list(costs.keys())[::-1]:
+                    if cookies >= costs[item]:
+                        functions[item]()  #muss so gelöst werden weil die funktionen sonst schon beim einlesen der dictionarys aufgerufen werden
+                        price = costs[item]
+                        costs[item] = math.ceil(costs[item] * costTax)
+                        itemCount[item] += 1
+                        bought = True
+                if not bought:
+                    cookies += rate
+                if bought:
+                    cookies -= (price + 6)
+                if lastItemCount["cursor"] < itemCount["cursor"]:
+                    rate += 0.1
+                    lastItemCount["cursor"] += 1
+                if lastItemCount["grandma"] < itemCount["grandma"] - 4:
+                    rate += 1
+                    lastItemCount["grandma"] += 5
+                if lastItemCount["farm"] < itemCount["farm"]:
+                    rate += 7
+                    lastItemCount["farm"] += 1
+                pyautogui.doubleClick(-1606, 514)
+                print("Aktuelle Zahl Cursor: {}".format(itemCount["cursor"]))
+                print("Aktuelle Zahl Grannies: {}".format(itemCount["grandma"]))
+                print("Aktuelle Zahl farms: {}".format(itemCount["farm"]))
+                print("Aktuelle Zahl Minen: {}".format(itemCount["mine"]))
+                print("Aktuelle Anzal clicks: {}".format(clicks))
+                print("Aktuelle Zahl cookies: {}".format(cookies))
+                print("Aktuelle Cusor-Kosten: {}".format(costs["cursor"]))
+                print("Aktuelle Cookie Rate: {}\n".format(rate))
+                time.sleep(0.08)
+        #mainGameThread = threading.Thread(target=mainGame)
+        mainGame()
+        
+        
+        
+        gc.collect() 
+        input()
+        
+        
+        # TODO threading verwenden um jede sekunde die cookie anzahl um die rate zu erhöhen und nicht etwa mit jedem durchlauf des loops
+        # TODO denn das loop ist zu schnell,   die cookie rate, bzw. die cookie anzahl stimmt nicht genau genug
+        #TODO make use of functional programming to coordinate the threads better and become a better developer
+                        </pre>
+</body>
+</html>
