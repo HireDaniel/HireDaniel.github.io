@@ -1,0 +1,85 @@
+/* * {
+    border: 1px solid red;
+} */
+
+* {
+    font-size: clamp(2vw, 1.4vw, 2.6vw);
+}
+
+body {
+    margin: 0;
+    padding: 10% 0;
+    border: 0;
+    background-color: yellow;
+    text-align: center;
+    font-size: clamp(3vw, 1.4vw, 1.6vw);
+    line-height: normal;
+}
+
+
+
+
+#input {
+    background-color: orange;
+    padding: 0.5vw 2vw;
+    color: white;
+}
+
+#btn-add {
+    padding: 0.4vw;
+
+}
+
+#hideout {
+    display: none;
+    padding-top: 1vw;
+    width: 25%;
+    margin: auto;
+}
+
+img {
+    display: none;
+    margin: 1vw auto;
+    width: 40%;
+}
+
+li {
+    width: 40%;
+    margin: auto;
+    text-align: center;
+    display: inline;
+    padding-right: 1vw;
+    padding-top: 2vw;
+}
+
+ul {
+    overflow: visible;
+    list-style-type: none;
+}
+
+span {
+    padding: 0px;
+    display: inline;
+}
+
+
+
+.done {
+    display: inline;
+    padding: 0 1vw;
+    margin: 0 1vw;  
+}
+
+#hard-work {
+    display: none;
+}
+
+small {
+    width: 30%;
+    display: block;
+    position: relative;
+    top: 2vw;
+    font-size: clamp(small, medium, larger);
+    margin: 2vw auto;
+
+}
