@@ -1,3 +1,76 @@
-body {
-  text-align: center;
+* {
+    padding: 0px;
+    margin: 0px;
+    /* border: 1px solid red; */
 }
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    background-color: rgb(144, 194, 204);
+    
+}
+
+h2 {
+    margin: 2% 0px 0px 0px;
+    font-size: 2rem;
+    color: white;
+    text-shadow: 2px -1px 5px#355C7D;
+}
+
+a {
+    text-decoration: none;
+    box-sizing: border-box;
+    display: block;
+    font-size: 1.4rem;
+    color: white;
+    text-shadow: 2px -1px 5px#355C7D;
+}
+
+p {
+    margin: 1% 0px 3% 0px;
+    font-style: italic;
+    /* text-shadow: 1px 1px 2px white; */
+    
+}
+
+main {
+    background-color: #45ADA8;
+    margin: 5% 20%;
+    height: auto;
+    box-shadow: 1px -1px 200px black;
+    border-radius: 12px;
+}
+
+.btn {
+    background-color: #9DE0AD;
+    border-radius: 15px;
+    padding: 2%;
+}
+
+.btn:hover {
+    box-shadow: 1px -1px 20px #6C5B7B;
+}
+
+img {
+    max-width: 100%;
+    border-radius: 12px;
+}
+
+@media only screen and (max-widht: 768px) {
+
+}
+
+
+
+/* 
+Color-Scheme
+#F8B195
+#F67280
+#C06C84
+#6C5B7B
+#355C7D
+*/
